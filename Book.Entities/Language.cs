@@ -9,5 +9,5 @@ public partial class Language
 
     public string Name { get; set; } = null!;
 
-    public virtual ICollection<Book> Books { get; } = new List<Book>();
+    public virtual ICollection<Book> Books { get; set; } = new List<Book>();
 }

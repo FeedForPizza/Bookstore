@@ -15,5 +15,5 @@ public partial class Author
 
     public byte[]? Photo { get; set; }
 
-    public virtual ICollection<Book> Books { get; } = new List<Book>();
+    public virtual ICollection<Book> Books { get; set; } = new List<Book>();
 }

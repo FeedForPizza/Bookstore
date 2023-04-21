@@ -25,9 +25,9 @@ public partial class Book
 
     public virtual Language Language { get; set; } = null!;
 
-    public virtual ICollection<OrderDetail> OrderDetails { get; } = new List<OrderDetail>();
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
-    public virtual ICollection<Author> Authors { get; } = new List<Author>();
+    public virtual ICollection<Author> Authors { get; set; } = new List<Author>();
 
-    public virtual ICollection<Genre> Genres { get; } = new List<Genre>();
+    public virtual ICollection<Genre> Genres { get; set; } = new List<Genre>();
 }

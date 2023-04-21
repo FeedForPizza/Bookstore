@@ -7,7 +7,7 @@
 	<div class="col-md-3">
 		@if (Model.Book.CoverImage != null)
 		{
-			<img src="@($"data:image/png;base64,{Convert.ToBase64String(Model.Book.CoverImage)}")" />
+			<img src="@($"data:image/png;base64,{Convert.ToBase64String(Model.Book.CoverImage)}")" width="100%" />
 		}
 		else
 		{
@@ -15,11 +15,14 @@
 		}
 	</div>
 	<div class="col-md-9">
-		<h2>@Model.Book.Title</h2>
-		<p>@Model.Book.Description</p>
-		<p>Цена: @Model.Book.Price</p>
-		<button class="btn btn-primary">Добави в количката</button>
-	</div>
+ <h2>@Model.Book.Title</h2>
+ <p>@Model.Book.Description</p>
+ <p>Price: @Model.Book.Price</p>
+ <form method="post">
+ <input type="hidden" name="bookId" value="@Model.Book.Id" />
+ <button class="btn btn-primary">Add to cart</button>
+ </form>
+ </div>
 </div>
 <table class="table">
 	<tbody>
@@ -63,3 +66,50 @@
 		</tr>
 	</tbody>
 </table>
+<div class="row">
+	<div class="col-9">
+		<h3>Details from OpenLibrary:</h3>
+		<ul>
+			<li>
+				<strong>
+					Publishing date:
+				</strong>@Model.OpenLibraryDetails.PublishDate
+			</li>
+			<li>
+				<strong>Publishing place: </strong>@string.Join(", ",
+				Model.OpenLibraryDetails.PublishPlaces.Select(x => x.Name))
+			</li>
+			<li>
+				<strong>
+					Number of pages:
+				</strong>@Model.OpenLibraryDetails.NumberOfPages
+			</li>
+		</ul>
+	</div>
+	<div class="col-3">
+		Cover from OpenLibrary:
+		<img src="@Model.OpenLibraryDetails.Cover.Medium" alt="Book cover"
+			 width="100%" />
+	</div>
+</div>
+<div class="row">
+	<div class="col-9">
+		<h3>Детайли от Google Books:</h3>
+		<ul>
+			<li>
+				<strong>
+					Издател:
+				</strong>@Model.GoogleDetails.VolumeInfo.Publisher
+			</li>
+			<li>
+				<strong>
+					Описание:
+				</strong>@Model.GoogleDetails.VolumeInfo.Description
+			</li>
+			<li>
+				<a href="@Model.GoogleDetails.VolumeInfo.PreviewLink.ToString()"
+				   target="_blank">Прегледайте книгата в Google Books</a>
+			</li>
+		</ul>
+	</div>
+</div>

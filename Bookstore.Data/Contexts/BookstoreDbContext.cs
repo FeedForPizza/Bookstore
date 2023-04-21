@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Book.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bookstore.Entities;
@@ -28,6 +29,8 @@ public partial class BookstoreDbContext : DbContext
     public virtual DbSet<Order> Orders { get; set; }
 
     public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+
+    public virtual DbSet<ApiUser> ApiUsers { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
